@@ -5,42 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITARA LAB | Collective Intelligence Protocol</title>
+    
+    <!-- TailWind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 
+      EXTERNAL API KEY CONFIGURATION 
+      This polyfill ensures process.env.API_KEY is available to your React components.
+    -->
+    <script>
+      // For GitHub Pages deployment, you have two options:
+      // 1. Paste your key directly below: API_KEY: "YOUR_KEY_HERE"
+      // 2. Or, append ?key=YOUR_KEY to your URL for temporary access.
+      const urlParams = new URLSearchParams(window.location.search);
+      window.process = { 
+        env: { 
+          API_KEY: urlParams.get('key') || "" 
+        } 
+      };
+    </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #020617; /* bg-slate-950 */
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            color: #e2e8f0;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 10px;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(59, 130, 246, 0.4);
-        }
-        
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace !important;
-        }
-    </style>
-<link rel="stylesheet" href="/index.css">
+    <!-- Babel Standalone for in-browser Transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <script type="importmap">
 {
   "imports": {
@@ -54,9 +41,47 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-CQvgyKSm.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: #e2e8f0;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 10px;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
+    
+    <!-- 
+      Load index.tsx using text/babel. 
+      Babel will handle the fetch and transpilation, solving the MIME error. 
+    -->
+    <script 
+      type="text/babel" 
+      data-type="module" 
+      data-presets="typescript,react" 
+      src="./index.tsx">
+    </script>
 </body>
 </html>
