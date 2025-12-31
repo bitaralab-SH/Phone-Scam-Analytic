@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITARA LAB | Collective Intelligence Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Polyfill for process.env to prevent crashes on static hosts like GitHub Pages -->
+    <script>
+      window.process = { env: { API_KEY: "" } };
+    </script>
+
+    <!-- Babel Standalone: Allows the browser to understand .tsx files on the fly -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <script type="importmap">
 {
   "imports": {
@@ -52,6 +61,17 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+    
+    <!-- 
+      By using type="text/babel", Babel will fetch the file via AJAX, 
+      ignoring the server's incorrect MIME type, and transpile it.
+      data-type="module" ensures that 'import' statements still work.
+    -->
+    <script 
+      type="text/babel" 
+      data-type="module" 
+      data-presets="typescript,react" 
+      src="./index.tsx">
+    </script>
 </body>
 </html>
