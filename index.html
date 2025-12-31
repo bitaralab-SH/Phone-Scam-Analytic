@@ -6,15 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITARA LAB | Collective Intelligence Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Polyfill for process.env to prevent crashes on static hosts like GitHub Pages -->
-    <script>
-      window.process = { env: { API_KEY: "" } };
-    </script>
 
-    <!-- Babel Standalone: Allows the browser to understand .tsx files on the fly -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617; /* bg-slate-950 */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: #e2e8f0;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.4);
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+    </style>
+<link rel="stylesheet" href="/index.css">
     <script type="importmap">
 {
   "imports": {
@@ -28,50 +54,9 @@
   }
 }
 </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #020617; /* bg-slate-950 */
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            color: #e2e8f0;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(59, 130, 246, 0.4);
-        }
-
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace !important;
-        }
-    </style>
+  <script type="module" crossorigin src="/assets/index-CQvgyKSm.js"></script>
 </head>
 <body>
     <div id="root"></div>
-    
-    <!-- 
-      By using type="text/babel", Babel will fetch the file via AJAX, 
-      ignoring the server's incorrect MIME type, and transpile it.
-      data-type="module" ensures that 'import' statements still work.
-    -->
-    <script 
-      type="text/babel" 
-      data-type="module" 
-      data-presets="typescript,react" 
-      src="./index.tsx">
-    </script>
 </body>
 </html>
